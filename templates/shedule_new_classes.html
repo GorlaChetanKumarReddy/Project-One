@@ -1,0 +1,38 @@
+{% extends 'admin_common_page.html' %}
+{% block acomn %}
+    <table align="center" border="2">
+    <br>
+<br>
+<br>
+<br>
+    <form action="{% url 'new_shedule_classes_added' %}" method="post">
+    {% csrf_token %}
+<table align="center" border="2">
+    <tr>
+        <th colspan="5" style="text-align: center">
+        add new shedule class
+        </th>
+    </th>
+</tr>
+    <tr>
+        <th>
+            {{ shedule_new_class_form }}
+        </th>
+        <th>
+            {{ shedule_new_class_form.errors }}
+        </th>
+    </tr>
+    <tr>
+    <th colspan="5" style="text-align: center">
+        <button type="submit" class="btn btn-secondary btn-sm">save</button>
+    </th>
+</tr>
+    <tr>
+        {% for i in messages %}
+        <th colspan="5" style="text-align: center">
+            {{ i }}
+        </th>
+        {% endfor %}
+    </tr>
+    </table>
+{% endblock %}

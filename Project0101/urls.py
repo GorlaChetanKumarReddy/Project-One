@@ -19,5 +19,8 @@ from app0101 import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.showIndex,name='main')
+    path('',views.showIndex,name='main'),
+    path('admin_log_in/',views.admin_log_in,name='admin_log_in'),
+    path('shedule_new_classes/',views.shedule_new_classes,name='shedule_new_classes'),
+    path('new_shedule_classes_added/',views.new_shedule_classes_added,name='new_shedule_classes_added')
 ]
