@@ -36,10 +36,19 @@
                 </a>
             </th>
             <th>
-                <img src="{% static 'images/delete icons/trash.png' %}" width="40" height="40">
+               <a href="{% url 'Delete_Shedule_class' %}?Deleteidno={{ i.idno }}">
+                   <img src="{% static 'images/delete icons/trash.png' %}" width="40" height="40">
+               </a>
             </th>
 
         </tr>
     {% endfor %}
+    <tr>
+        <th colspan="10" style="text-align: center">
+           {% for i in messages %}
+               {{ i }}
+            {% endfor %}
+        </th>
+    </tr>
     </table>
 {% endblock %}

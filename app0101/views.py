@@ -41,4 +41,24 @@ def view_all_shedule_classes(request):
 def update_shedule_classes(request):
     iddata = request.GET.get('upda')
     dta = new_shedule_class_model.objects.get(idno=iddata)
-    return render(request, 'update_shedule_classes.html', {'data':dta})
+    formss = shedule_classess
+    return render(request, 'update_shedule_classes.html', {'data':dta,'sforms':formss})
+
+
+def update_shedule_classes_successf(request):
+    idn = request.POST.get('u')
+    c_name = request.POST.get('u0')
+    fname = request.POST.get('u1')
+    datee = request.POST.get('u2')
+    timeee = request.POST.get('u3')
+    feee = request.POST.get('u4')
+    duration_d = request.POST.get('u5')
+    new_shedule_class_model.objects.filter(idno=idn).update(faculty_name=fname,date=datee,time=timeee,fee=feee,durtion_days=duration_d)
+    return redirect('view_all_shedule_classes')
+
+
+def Delete_Shedule_class(request):
+    idn = request.GET.get('Deleteidno')
+    new_shedule_class_model.objects.get(idno=idn).delete()
+    messages.success(request, 'deleted')
+    return redirect('update_shedule_classes')
