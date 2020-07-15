@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from app0101.forms import shedule_classess
+from app0101.models import new_shedule_class_model
 
 # Create your views here.
 def showIndex(request):
@@ -30,3 +31,14 @@ def new_shedule_classes_added(request):
         formmm.save()
         messages.success(request, 'new class add sucessfully')
     return redirect('shedule_new_classes')
+
+
+def view_all_shedule_classes(request):
+    context = new_shedule_class_model.objects.all()
+    return render(request, 'view_all_shedule_classes.html', {'show_all_classess':context})
+
+
+def update_shedule_classes(request):
+    iddata = request.GET.get('upda')
+    dta = new_shedule_class_model.objects.get(idno=iddata)
+    return render(request, 'update_shedule_classes.html', {'data':dta})

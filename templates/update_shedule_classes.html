@@ -1,0 +1,42 @@
+{% extends 'admin_common_page.html' %}
+{% block acomn %}
+    <table align="center" border="2">
+
+    <tr>
+        <th>
+            <input type="number"value="{{ data.idno }}" readonly>
+        </th>
+    </tr>
+    <tr>
+        <th>
+           <input type="text" value="{{ data.name }}" name="u1">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input type="text" value="{{ data.faculty_name }}" name="u2">
+        </th>
+    </tr>
+        <tr>
+        <th>
+            <input type="text" value="{{ data.date }}" name="u3">
+        </th>
+    </tr>
+        <tr>
+        <th>
+            <input type="text" value="{{ data.time }}" name="u4">
+        </th>
+    </tr>
+        <tr>
+        <th>
+            <input type="number" value="{{ data.fee }}" name="u5">
+        </th>
+    </tr>
+        <tr>
+        <th>
+            <input type="number" value="{{ data.durtion_days }}" name="u6">
+        </th>
+    </tr>
+
+    </table>
+{% endblock %}
