@@ -1,0 +1,30 @@
+{% extends 'commn.html' %}
+{% block comn %}
+    <form action="{% url 'regiser_user_success' %}" method="post">
+    {% csrf_token %}
+    <table align="center" border="2">
+    <tr>
+        <th colspan="5" style="text-align: center">
+            register here
+        </th>
+    </tr>
+    <tr>
+        <th>
+            {{ register_form }}
+        </th>
+        {% if mes %}
+    <tr>
+        <th colspan="10" style="text-align: center">
+            {{ mes }}
+
+        </th>
+    </tr>
+        {% endif %}
+            <tr>
+                <th colspan="10" style="text-align: center">
+                    <button type="submit" class="btn btn-secondary btn-sm">register</button>
+                </th>
+            </tr>
+    </table>
+    </form>
+{% endblock %}

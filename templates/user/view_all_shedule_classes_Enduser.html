@@ -1,0 +1,31 @@
+{% extends 'commn.html' %}
+{% block comn %}
+    <style type="text/css">
+    th{
+        text-align: center;
+    }
+    </style>
+    <table align="center" border="2">
+        <tr>
+        <th>course name</th>
+        <th>faculty name</th>
+        <th>date</th>
+        <th>time</th>
+        <th>fee</th>
+        <th>duration days</th>
+            <th>get</th>
+    </tr>
+    {% for i in show %}
+    <tr>
+    <th>{{ i.name }}</th>
+    <th>{{ i.faculty_name }}</th>
+    <th>{{ i.date }}</th>
+    <th>{{ i.time }}</th>
+    <th>{{ i.fee }}</th>
+    <th>{{ i.durtion_days }}</th>
+    <th>applay</th>
+    </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

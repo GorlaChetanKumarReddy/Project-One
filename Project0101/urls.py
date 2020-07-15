@@ -26,5 +26,11 @@ urlpatterns = [
     path('view_all_shedule_classes/',views.view_all_shedule_classes,name='view_all_shedule_classes'),
     path('update_shedule_classes/',views.update_shedule_classes,name='update_shedule_classes'),
     path('update_shedule_classes_sucess/',views.update_shedule_classes_successf,name='update_shedule_classes_sucess'),
-    path('Delete_Shedule_class/',views.Delete_Shedule_class,name='Delete_Shedule_class')
+    path('Delete_Shedule_class/',views.Delete_Shedule_class,name='Delete_Shedule_class'),
+    path('view_all_shedule_classes_Enduser/',views.view_all_shedule_classes_Enduser,name='view_all_shedule_classes_Enduser'),
+    path('register_user/',views.register_user,name='register_user'),
+    path('regiser_user_success/',views.regiser_user_success,name='regiser_user_success'),
+    path('view_all_registerd_users/',views.view_all_registerd_users,name='view_all_registerd_users'),
+    path('user_search/',views.user_search,name='user_search'),
+    path('search_users/',views.search_users,name='search_users'),
 ]

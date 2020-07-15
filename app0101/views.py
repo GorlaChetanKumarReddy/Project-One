@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from app0101.forms import shedule_classess
-from app0101.models import new_shedule_class_model
+from app0101.forms import shedule_classess,user_register_form
+from app0101.models import new_shedule_class_model,user_register
 
 # Create your views here.
 def showIndex(request):
@@ -61,4 +61,40 @@ def Delete_Shedule_class(request):
     idn = request.GET.get('Deleteidno')
     new_shedule_class_model.objects.get(idno=idn).delete()
     messages.success(request, 'deleted')
-    return redirect('update_shedule_classes')
+    return view_all_shedule_classes(request)
+
+
+def view_all_shedule_classes_Enduser(request):
+    records = new_shedule_class_model.objects.all()
+    return render(request, 'user/view_all_shedule_classes_Enduser.html',{'show':records})
+
+
+def register_user(request):
+    form = user_register_form
+    return render(request, 'user/register_user.html', {'register_form':form})
+
+
+def regiser_user_success(request):
+    usr_register_form = user_register_form(request.POST)
+    if usr_register_form.is_valid():
+        usr_register_form.save()
+        return render(request, 'user/register_user.html',{'register_form':user_register_form,'mes':'register sucessfully'})
+    else:
+        return render(request,'user/register_user.html',{'register_form':usr_register_form,'mes':'register unsuccessfull'})
+
+
+def view_all_registerd_users(request):
+    register_users = user_register.objects.all()
+    return render(request, 'view_all_registerd_users.html', {'users':register_users})
+
+
+def user_search(request):
+    course_id = request.GET.get('sea')
+    course_details = new_shedule_class_model.objects.filter(idno=course_id)
+    return render(request, 'user/user_search.html',{'data':course_details})
+
+
+def search_users(request):
+    idn = request.POST.get('s1')
+    dat = user_register.objects.filter(Idno=idn)
+    return render(request, 'search_users.html', {'data':dat})
