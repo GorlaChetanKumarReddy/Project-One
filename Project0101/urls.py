@@ -33,4 +33,6 @@ urlpatterns = [
     path('view_all_registerd_users/',views.view_all_registerd_users,name='view_all_registerd_users'),
     path('user_search/',views.user_search,name='user_search'),
     path('search_users/',views.search_users,name='search_users'),
+    path('delete_user/',views.delete_user,name='delete_user'),
+    path('user_log_in/',views.user_log_in,name='user_log_in'),
 ]

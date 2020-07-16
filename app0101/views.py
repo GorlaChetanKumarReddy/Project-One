@@ -97,4 +97,19 @@ def user_search(request):
 def search_users(request):
     idn = request.POST.get('s1')
     dat = user_register.objects.filter(Idno=idn)
-    return render(request, 'search_users.html', {'data':dat})
+    if dat:
+        users = user_register.objects.all()
+        return render(request, 'view_all_registerd_users.html', {'data':dat,'users':users})
+    else:
+        users = user_register.objects.all()
+        return render(request, 'view_all_registerd_users.html', {'imes':"Invalid Id Number",'users':users})
+
+
+def delete_user(request):
+    idnu = request.GET.get('idnoo')
+    user_register.objects.get(Idno=idnu).delete()
+    return search_users(request)
+
+
+def user_log_in(request):
+    return render(request, 'user/user_log_in.html')

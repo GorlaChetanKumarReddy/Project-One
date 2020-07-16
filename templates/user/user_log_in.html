@@ -1,0 +1,47 @@
+{% extends 'commn.html' %}
+{% block comn %}
+    <table align="center" border="0">
+<tr>
+    <th style="text-align: center">
+        user log_in
+    </th>
+</tr>
+<tr>
+    <th>
+        <br>
+
+           <div class="input-group flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping"></span>
+                </div>
+                              <input type="text" class="form-control" required placeholder="Username" aria-label="Username" name="a1" aria-describedby="addon-wrapping">
+            </div>
+    </th>
+</tr>
+<tr>
+    <th>
+        <div class="input-group flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping"></span>
+                </div>
+                    <input type="password" class="form-control" required placeholder="password"name="a2" aria-label="Username" aria-describedby="addon-wrapping">
+            </div>
+    </th>
+</tr>
+<tr>
+    <th style="text-align: center">
+        <br>
+        <tr>
+    {% for i in messages %}
+    <th style="text-align: center">
+        {{ i }}
+    </th>
+    {% endfor %}
+</tr>
+<tr>
+    <th style="text-align: center">
+        <button type="submit" class="btn btn-secondary btn-sm">log_in</button>
+    </th>
+</tr>
+</table>
+{% endblock %}

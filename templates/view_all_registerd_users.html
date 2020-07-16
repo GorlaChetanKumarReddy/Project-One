@@ -6,8 +6,55 @@
     }
     </style>
 
+        <form action="{% url 'search_users' %}"method="post">
+    {% csrf_token %}
+    <table align="center" border="2">
+    <tr>
+        <th>
+            <input type="number" placeholder="id" name="s1" required >
+        </th>
+    </tr>
+    <tr>
+    <th style="text-align: center">
+        <button type="submit" class="btn btn-secondary btn-sm">search</button>
+    </th>
+</tr>
+        {% if imes %}
+        <tr>
+            <th colspan="5" style="text-align: center">
+                {{ imes }}
+            </th>
+        </tr>
+        {% endif %}
+    </table>
+    </form>
+ {% for i in data %}
+    <table align="center" border="2">
+    <tr>
+        <th>idno</th>
+        <th>name</th>
+        <th>Contact_No</th>
+        <th>email</th>
+        <th>Password</th>
+        <th>delete</th>
+    </tr>
+    <tr>
+        <th>{{ i.Idno }}</th>
+        <th>{{ i.Name }}</th>
+        <th>{{ i.Contact_No }}</th>
+        <th>{{ i.Email }}</th>
+        <th>{{ i.Password }}</th>
+        <th>
+            <a href="{% url 'delete_user' %}?idnoo={{ i.Idno }}"> delete </a>
+        </th>
+
+    </tr>
+    {% endfor %}
+
+
     <table align="center" border="2">
        <tr>
+           <br>
         <th>idno</th>
         <th>name</th>
         <th>phone</th>
@@ -24,20 +71,8 @@
         </tr>
     {% endfor %}
     </table>
-    <form action="{% url 'search_users' %}"method="post">
-    {% csrf_token %}
-    <table align="center" border="2">
-    <tr>
-        <th>
-            <input type="number" placeholder="id" name="s1" required >
-        </th>
-    </tr>
-    <tr>
-    <th style="text-align: center">
-        <button type="submit" class="btn btn-secondary btn-sm">search</button>
-    </th>
-</tr>
+
     </table>
-    </form>
 
 {% endblock %}
+
