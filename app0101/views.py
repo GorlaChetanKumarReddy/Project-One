@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from app0101.forms import shedule_classess,user_register_form
 from app0101.models import new_shedule_class_model,user_register
+from django.db.models import Q
 
 # Create your views here.
 def showIndex(request):
@@ -89,9 +90,14 @@ def view_all_registerd_users(request):
 
 
 def user_search(request):
-    course_id = request.GET.get('sea')
-    course_details = new_shedule_class_model.objects.filter(idno=course_id)
-    return render(request, 'user/user_search.html',{'data':course_details})
+    course_name = request.POST.get('sea1', '')
+    if course_name:
+        course_details = new_shedule_class_model.objects.filter(Q(name__icontains=course_name) |
+                                                                Q(faculty_name__icontains=course_name))
+        return render(request, 'user/user_search.html', {'data': course_details,'searchname':course_name})
+    else:
+        cn = course_name
+        return render(request,'view_all_shedule_classes.html',{"mes":cn})
 
 
 def search_users(request):

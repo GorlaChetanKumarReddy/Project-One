@@ -1,35 +1,32 @@
 {% extends 'commn.html' %}
 {% block comn %}
 
-    <table align="center" border="2">
-    <tr>
-        <th>results</th>
-    </tr>
+    <table align="center" border="0">
         <tr>
-        <th>
-            {{ data.name }}
-        </th>
-    </tr>
+        <th>results for:{{ searchname }}</th>
+  </tr>
+    </table>
+    <table align="center" border="2">
+    {% if data %}
     <tr>
-        <th>
-        </th>
-    </tr>
-    <tr>
-        <th>{{ data.faculty_name }}</th>
+        <th> course name   </th>
+        <th> faculty name   </th>
+        <th> date   </th>
+        <th> time</th>
+        <th> fee   </th>
+        <th> duration days   </th>
     </tr>
     {% for i in data %}
         <tr>
-        <th>
-            {{ i.Email }}
-        </th>
-        <th>
-            {{ i.Name }}
-        </th>
-        <th>
-            {{ i. }}
-        </th>
-        </tr>
+            <th> {{ i.name }}  </th>
+            <th> {{ i.faculty_name }}  </th>
+            <th> {{ i.date }}  </th>
+            <th> {{ i.time }}</th>
+            <th> {{ i.fee }}  </th>
+            <th> {{ i.durtion_days }}  </th>
+            <th>
     {% endfor %}
+    {% endif %}
     </table>
 
 {% endblock %}
