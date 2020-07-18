@@ -1,11 +1,11 @@
 {% extends 'commn.html' %}
 {% block comn %}
-    <form action="{% url 'user_log_in_sucess' %}" method="post">
+    <form action="{% url 'cuser_loin_request' %}" method="post">
     {% csrf_token %}
     <table align="center" border="0">
 <tr>
     <th style="text-align: center">
-        user log_in
+        cuser log_in
     </th>
 </tr>
 <tr>
@@ -16,7 +16,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="addon-wrapping"></span>
                 </div>
-                              <input type="text" class="form-control" required placeholder="phone" aria-label="Username" name="ul1" aria-describedby="addon-wrapping">
+                              <input type="text" class="form-control" required placeholder="username" aria-label="Username" name="cul1" aria-describedby="addon-wrapping">
             </div>
     </th>
 </tr>
@@ -26,7 +26,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="addon-wrapping"></span>
                 </div>
-                    <input type="password" class="form-control" required placeholder="password"name="ul2" aria-label="Username" aria-describedby="addon-wrapping">
+                    <input type="password" class="form-control" required placeholder="password" name="cul2" aria-label="Username" aria-describedby="addon-wrapping">
             </div>
     </th>
 </tr>
@@ -43,6 +43,13 @@
             </th>
         </tr>
         {% endif %}
+        {% for mes in messages %}
+    <tr>
+        <th colspan="5" style="text-align: center">
+            {{ mes }}
+        </th>
+    </tr>
+    {% endfor %}
 </table>
     </form>
 {% endblock %}

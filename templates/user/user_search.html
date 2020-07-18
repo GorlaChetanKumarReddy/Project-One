@@ -16,6 +16,7 @@
         <th> fee   </th>
         <th> duration days   </th>
     </tr>
+        {% endif %}
     {% for i in data %}
         <tr>
             <th> {{ i.name }}  </th>
@@ -24,9 +25,11 @@
             <th> {{ i.time }}</th>
             <th> {{ i.fee }}  </th>
             <th> {{ i.durtion_days }}  </th>
-            <th>
+        <th>
+            <a href="">applay </a>
+        </th>
+        </tr>
     {% endfor %}
-    {% endif %}
     </table>
 
 {% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'commn.html' %}
+{% block comn %}
+
+    <form action="{% url 'cusers_register_request' %}" method="post">
+    {% csrf_token %}
+
+<table align="center" border="0">
+    <tr>
+        <th colspan="5" style="text-align: center">
+            register here
+        </th>
+    </tr>
+        <tr>
+            <th>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">first name</span>
+                    </div>
+                        <input type="text" aria-label="First name" class="form-control" required name="cu1">
+                </div>
+            </th>
+        </tr>
+                <tr>
+            <th>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">last name</span>
+                    </div>
+                        <input type="text" aria-label="First name" class="form-control" required name="cu2">
+                </div>
+            </th>
+        </tr>
+            <tr>
+
+            <tr>
+            <th>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">user name</span>
+                    </div>
+                        <input type="text" aria-label="First name" class="form-control" required name="cu3">
+                </div>
+            </th>
+        </tr>
+            <tr>
+            <th>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">email</span>
+                    </div>
+                        <input type="email" aria-label="First name" class="form-control" required name="cu4">
+                </div>
+            </th>
+        </tr>
+                <tr>
+            <th>
+            <tr>
+            <th>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">password</span>
+                    </div>
+                        <input type="password" aria-label="First name" class="form-control" required name="cu5">
+                </div>
+            </th>
+        </tr>
+            <tr>
+            <th>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">confirm-password</span>
+                    </div>
+                        <input type="password" aria-label="First name" class="form-control" required name="cu6">
+                </div>
+            </th>
+        </tr>
+    <tr>
+        <th>       <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">phone number</span>
+                    </div>
+                        <input type="number" aria-label="First name" class="form-control" required name="cu7">
+                </div>
+            </th>
+        </tr>
+            <tr>
+                <th colspan="10" style="text-align: center">
+                    <button type="submit" class="btn btn-secondary btn-sm">register</button>
+                </th>
+            </tr>
+    {% for mes in messages %}
+    <tr>
+        <th>
+            {{ mes }}
+        </th>
+    </tr>
+    {% endfor %}
+    </table>
+    </form>
+{% endblock %}

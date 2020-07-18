@@ -7,14 +7,15 @@
     }
     </style>
     <table align="center" border="2">
-    {% if  mes %}
+    {% if  messag %}
     <tr>
     <th>
-        results not found:{{ mes }}
+        We did not find results for: {{ messag }}. Try the suggestions below or type a new query above.
     </th>
     </tr>
     {% endif %}
     </tr>
+    {% if show_all_classess %}
     <tr>
         <th colspan="10" style="text-align: center;font-size: 20px">
             shedule classess
@@ -58,5 +59,6 @@
             {% endfor %}
         </th>
     </tr>
+    {% endif %}
     </table>
 {% endblock %}

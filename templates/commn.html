@@ -12,7 +12,7 @@
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -22,25 +22,73 @@
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'main' %}">Home <span class="sr-only">(current)</span></a>
       </li>
+
+        <li class="nav-item active">
+        <a class="nav-link" href="{% url 'admin_log_inpage' %}">admin <span class="sr-only">(current)</span></a>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="{% url 'view_all_shedule_classes_Enduser' %}">courses</a>
       </li>
               <li class="nav-item">
         <a class="nav-link" href="{% url 'register_user' %}">register</a>
       </li>
+
                       <li class="nav-item">
         <a class="nav-link" href="{% url 'user_log_in' %}">log-in</a>
       </li>
 
-
     </ul>
+  </div>
     <form class="form-inline my-2 my-lg-0" action="{% url 'user_search' %}" method="post">
         {% csrf_token %}
-      <input class="form-control mr-sm-2" type="search" placeholder="course" aria-label="Search" name="sea1">
+      <input class="form-control mr-sm-2" type="search" required placeholder="search......" aria-label="Search" name="sea1">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
+    </form>
+<ul>
+       <li>
+           {% if user.is_authenticated %}
+            <p>hello
+                <a href="{% url 'cuser_log_in' %}">
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-user">{{ user.first_name }}</span></a>
+                 </button>
+            </p>
+               </li>
+               </ul>
+
+                {% else %}
+
+                    <div class="container">
+                        <p>register:
+                            <a href="{% url 'cusers_register' %}">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </a>
+                        </p>
+                            <p>alredy account
+                                <a href="{% url 'cuser_log_in' %}">
+                                    <button type="button" class="btn btn-default btn-sm">
+                                        <span class="glyphicon glyphicon-user"></span></a> log-in
+                                    </button>
+                            </p>
+                    {% endif %}
+
+      <p>account:
+        <a href="#" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-user"></span> {{ user.first_name }}
+        </a>
+      </p>
+    </div>
     </form>
   </div>
 </nav>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
    {% block comn %}
 
    {% endblock %}

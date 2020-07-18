@@ -10,36 +10,57 @@
         </tr>
 
     <tr>
+            <th>
+                id no
+            </th>
         <th>
             <input type="number"value="{{ data.idno }}" name="u" readonly>
         </th>
     </tr>
     <tr>
+            <th>
+                course name
+            </th>
         <th>
            <input type="text" value="{{ data.name }}"  readonly name="uo">
         </th>
     </tr>
     <tr>
         <th>
+            faculty name
+        </th>
+        <th>
             <input type="text" value="{{ data.faculty_name }}" name="u1">
         </th>
     </tr>
         <tr>
+            <th>
+                date
+            </th>
         <th>
-            <input type="date" value="{{ data.date }}" name="u2">
+            <input type="date" value="{{ data.date }}" name="u2"  pattern="\d{1,2}/\d{1,2}/\d{4}" required>
         </th>
     </tr>
         <tr>
+            <th>
+                time
+            </th>
         <th>
-            <input type="time" value="{{ data.time }}" name="u3">
+            <input type="time" value="{{ data.time }}" name="u3" required>
         </th>
     </tr>
         <tr>
+            <th>
+                fee
+            </th>
         <th>
             <input type="number" value="{{ data.fee }}" name="u4">
         </th>
     </tr>
         <tr>
+            <th>
+                duration days
+            </th>
         <th>
             <input type="number" value="{{ data.durtion_days }}" name="u5">
         </th>
@@ -49,6 +70,7 @@
         <button type="submit" class="btn btn-secondary btn-sm">save</button>
     </th>
 </tr>
+
 
     </table>
 {% endblock %}

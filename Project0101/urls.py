@@ -14,11 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from app0101 import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',include('cusers.urls')),
     path('',views.showIndex,name='main'),
     path('admin_log_in/',views.admin_log_in,name='admin_log_in'),
     path('shedule_new_classes/',views.shedule_new_classes,name='shedule_new_classes'),
@@ -35,4 +36,6 @@ urlpatterns = [
     path('search_users/',views.search_users,name='search_users'),
     path('delete_user/',views.delete_user,name='delete_user'),
     path('user_log_in/',views.user_log_in,name='user_log_in'),
+    path('user_log_in_sucess/',views.user_log_in_sucess,name='user_log_in_sucess'),
+    path('admin_log_inpage/',views.admin_log_inpage,name='admin_log_inpage'),
 ]

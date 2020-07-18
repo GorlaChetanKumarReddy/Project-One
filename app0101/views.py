@@ -13,7 +13,7 @@ def admin_log_in(request):
     uname = request.POST.get('a1')
     passw = request.POST.get('a2')
     if uname == 'admin':
-        if passw == 'admin1':
+        if passw == '123456':
             return render(request, 'admin_log_in_sucess.html')
         messages.error(request, 'wrong password')
         return redirect('main')
@@ -90,14 +90,14 @@ def view_all_registerd_users(request):
 
 
 def user_search(request):
-    course_name = request.POST.get('sea1', '')
+    course_name = request.POST.get('sea1','')
     if course_name:
         course_details = new_shedule_class_model.objects.filter(Q(name__icontains=course_name) |
-                                                                Q(faculty_name__icontains=course_name))
+                                                                Q(faculty_name__icontains=course_name) |
+                                                                Q(date__icontains=course_name))
         return render(request, 'user/user_search.html', {'data': course_details,'searchname':course_name})
     else:
-        cn = course_name
-        return render(request,'view_all_shedule_classes.html',{"mes":cn})
+        return render(request,'view_all_shedule_classes.html',{"messag":course_name})
 
 
 def search_users(request):
@@ -108,7 +108,7 @@ def search_users(request):
         return render(request, 'view_all_registerd_users.html', {'data':dat,'users':users})
     else:
         users = user_register.objects.all()
-        return render(request, 'view_all_registerd_users.html', {'imes':"Invalid Id Number",'users':users})
+        return render(request, 'view_all_shedule_classes.html', {'imes':"Invalid Id Number",'show':users})
 
 
 def delete_user(request):
@@ -119,3 +119,22 @@ def delete_user(request):
 
 def user_log_in(request):
     return render(request, 'user/user_log_in.html')
+
+
+def user_log_in_sucess(request):
+    uname = request.POST.get('ul1')
+    upas = request.POST.get('ul2')
+    usr = user_register.objects.filter(Contact_No=uname)
+    if usr:
+        upasswo = user_register.objects.filter(Password=upas)
+        if upasswo:
+            profiledetails = user_register.objects.all()
+            return render(request,'index.html',{'uname':uname,"userprofile":profiledetails})
+        else:
+            return render(request, 'user/user_log_in.html',{'umes':"wrong password"})
+    else:
+        return render(request,'user/user_log_in.html', {'umes':"wrong phone number"})
+
+
+def admin_log_inpage(request):
+    return render(request,'index.html',{"log":"lo"})
